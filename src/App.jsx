@@ -7,48 +7,50 @@ function App() {
       _id: "p1",
       name: "Artur",
       hobbies: [" Coding ", " Gaming "],
-      image: "https://source.unsplash.com/100x100/?person,artur",
+      image: "https://source.unsplash.com/100x100/?person,pilot",
     },
     {
       _id: "p2",
       name: "Tiana",
       hobbies: [" Coding", " Running", " Reading"],
-      image: "https://source.unsplash.com/100x100/?person,tiana",
+      image: "https://source.unsplash.com/100x100/?person,teacher",
     },
     {
       _id: "p3",
       name: "Rita",
       hobbies: [],
-      image: "https://source.unsplash.com/100x100/?person,rita",
+      image: "https://source.unsplash.com/100x100/?person,stewardess",
     },
     {
       _id: "p4",
       name: "Ricci",
-      hobbies: [" Traveling", " Coding", " Reading"],
-      image: "https://source.unsplash.com/100x100/?person,ricci",
+      hobbies: [" Traveling", " Coding", " Reading", " Writin"],
+      image: "https://source.unsplash.com/100x100/?person,officer",
     },
   ]);
 
-  const [selectedPerson, setSelectedPerson] = useState();
+  const [person, setPerson] = useState();
   const [message, setMessage] = useState("");
 
   const showHobbies = () => {
-    selectedPerson.hobbies.length > 0
+    person.hobbies.length > 0
       ? setMessage(
-          selectedPerson.name + "s " + "hobbies are: " + selectedPerson.hobbies
+          person.name + "s " + "hobbies are: " + person.hobbies
         )
       : setMessage(
           "Unfortunately, " +
-            selectedPerson.name +
+            person.name +
             " " +
             "don't have any hobbies."
         );
   };
 
-  const displayHobbies = (person) => {
-    setSelectedPerson(person);
+  const countHobbies = (person) => {
+    setPerson(person);
     setMessage(person.name + " has " + person.hobbies.length + " hobbies");
   };
+
+  // const mailformat = /^[a-z0-9_.-]{2,}@[a-z.]{2,}\.[a-z]{2,}$/gi;
 
   return (
     <div className="App">
@@ -57,7 +59,7 @@ function App() {
         {people.map((person) => (
           <div
             key={person._id}
-            onClick={() => displayHobbies(person)}
+            onClick={() => countHobbies(person)}
             className="person"
           >
             <img src={person.image} alt={person.name} />
@@ -67,7 +69,9 @@ function App() {
           </div>
         ))}
       </div>
-      <button onClick={() => showHobbies()}>show hobbies!</button>
+      <button 
+      onClick={() => showHobbies()}
+      >show hobbies!</button>
       <div className="hobbies_message">{message}</div>
       <form className="feedback">
         <h2>Your feedback is important to us!</h2>
