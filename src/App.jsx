@@ -18,38 +18,50 @@ function App() {
     {
       _id: "p3",
       name: "Niko",
-      hobbies: ["Doging ", "Cating ", "Coding "],
+      hobbies: [],
       image: "https://source.unsplash.com/100x100/?person,niko",
     },
   ]);
 
-  const [amount, setAmount] = useState(0);
-  const [savedHobbies, setSavedHobbies] = useState();
+  const [selectedPerson, setSelectedPerson] = useState();
   const [message, setMessage] = useState("");
+
+  const displayHobbies = (person) => {
+    setSelectedPerson(person);
+    setMessage(person.name + "s" + " hobbies are: " + person.hobbies);
+  };
+  
 
   return (
     <div className="App">
       <div className="people">
         {people.map((person) => (
-          <div className="person" key={person._id}>
+          <div
+            key={person._id}
+            onClick={() => displayHobbies(person)}
+            className="person"
+          >
             <img src={person.image} alt={person.name} />
             <div className="name">{person.name}</div>
-            <div className="hobbies">hobbies: 
-             </div>
+            <div className="hobbies">hobbies:</div>
             <div className="hobby">{person.hobbies}</div>
           </div>
         ))}
       </div>
       <button>show hobbies!</button>
-      <div className="hobbies">
-        hobbies
-      </div>
+      <div className="hobbies">{message}</div>
       <form className="feedback">
         <h2>Your feedback is important to us!</h2>
         <input type="text" className="email" placeholder="your email..." />
 
-        <textarea  
-        id="w3review" name="w3review" rows="2" cols="50" className="message" placeholder="write a message..." />
+        <textarea
+          id="w3review"
+          name="w3review"
+          rows="2"
+          cols="50"
+          className="message"
+          placeholder="write a message..."
+        />
         <button className="button">send</button>
       </form>
     </div>
