@@ -24,6 +24,15 @@
 .person.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.name {
+font-weight: bold;
+}
+.hobby{
+  color: blueviolet;
+}
+.hobbies_message{
+  color: green;
+}
 .feedback{
   display: flex;
   flex-direction: column;
