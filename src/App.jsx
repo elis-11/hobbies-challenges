@@ -44,7 +44,7 @@ function App() {
     setSelectedPerson(person);
     // setMessage(showHobbies);
     // setMessage(person.name + "s" + " hobbies are: " + person.hobbies);
-    setMessage(person.name + " was selected ");
+    setMessage(person.name + " has " + person.hobbies.length + " hobbies");
   };
 
 
