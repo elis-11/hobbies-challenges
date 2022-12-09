@@ -18,8 +18,14 @@ function App() {
     {
       _id: "p3",
       name: "Niko",
-      hobbies: [],
+      hobbies: [" Coding", " Running", " Reading"],
       image: "https://source.unsplash.com/100x100/?person,niko",
+    },
+    {
+      _id: "p4",
+      name: "Robert",
+      hobbies: [" Traveling", " Coding", " Reading"],
+      image: "https://source.unsplash.com/100x100/?person,robert",
     },
   ]);
 
