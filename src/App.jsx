@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { Mentions } from "./mentions/Mentions";
 
 function App() {
   const [people, setPeople] = useState([
@@ -28,6 +29,17 @@ function App() {
       image: "https://source.unsplash.com/100x100/?person,officer",
     },
   ]);
+  const users = [
+    {
+      id: "jack",
+      display: "Jack",
+    },
+    {
+      id: "john",
+      display: "john",
+    },
+  ];
+
 
   const [person, setPerson] = useState();
   const [message, setMessage] = useState("");
@@ -87,6 +99,7 @@ function App() {
         />
         <button className="button">send</button>
       </form>
+      <Mentions users={users}/>
     </div>
   );
 }
