@@ -5,27 +5,27 @@ function App() {
   const [people, setPeople] = useState([
     {
       _id: "p1",
-      name: "Gael",
+      name: "Artur",
       hobbies: [" Coding ", " Gaming "],
-      image: "https://source.unsplash.com/100x100/?person,gael",
+      image: "https://source.unsplash.com/100x100/?person,artur",
     },
     {
       _id: "p2",
-      name: "Edward",
+      name: "Tiana",
       hobbies: [" Coding", " Running", " Reading"],
-      image: "https://source.unsplash.com/100x100/?person,edward",
+      image: "https://source.unsplash.com/100x100/?person,tiana",
     },
     {
       _id: "p3",
-      name: "Niko",
-      hobbies: [" Coding", " Running", " Reading"],
-      image: "https://source.unsplash.com/100x100/?person,niko",
+      name: "Rita",
+      hobbies: [],
+      image: "https://source.unsplash.com/100x100/?person,rita",
     },
     {
       _id: "p4",
-      name: "Robert",
+      name: "Ricci",
       hobbies: [" Traveling", " Coding", " Reading"],
-      image: "https://source.unsplash.com/100x100/?person,robert",
+      image: "https://source.unsplash.com/100x100/?person,ricci",
     },
   ]);
 
@@ -50,6 +50,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Hobbies Challenges</h1>
       <div className="people">
         {people.map((person) => (
           <div
