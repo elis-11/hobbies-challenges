@@ -19,7 +19,22 @@
 .person:hover {
   /* filter: drop-shadow(0 0 2em #646cffaa); */
   opacity: .8;
+  border: 1px solid lightslategray;
 }
 .person.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.feedback{
+  display: flex;
+  flex-direction: column;
+}
+.email{
+  height: auto;
+  padding-left: 15px;
+}
+.message{
+  height: auto;
+  margin: 15px 0;
+  padding-left: 15px;
+}
+
