@@ -35,18 +35,20 @@ function App() {
   const showHobbies = () => {
     selectedPerson.hobbies.length > 0
       ? setMessage(
-          selectedPerson.name + 's ' + "hobbies are: " + selectedPerson.hobbies
+          selectedPerson.name + "s " + "hobbies are: " + selectedPerson.hobbies
         )
-      : setMessage('Unfortunately, ' + selectedPerson.name + ' ' + "don't have any hobbies.");
+      : setMessage(
+          "Unfortunately, " +
+            selectedPerson.name +
+            " " +
+            "don't have any hobbies."
+        );
   };
 
   const displayHobbies = (person) => {
     setSelectedPerson(person);
-    // setMessage(showHobbies);
-    // setMessage(person.name + "s" + " hobbies are: " + person.hobbies);
     setMessage(person.name + " has " + person.hobbies.length + " hobbies");
   };
-
 
   return (
     <div className="App">
@@ -54,9 +56,9 @@ function App() {
       <div className="people">
         {people.map((person) => (
           <div
-          key={person._id}
-          onClick={() => displayHobbies(person)}
-          className="person"
+            key={person._id}
+            onClick={() => displayHobbies(person)}
+            className="person"
           >
             <img src={person.image} alt={person.name} />
             <div className="name">{person.name}</div>
@@ -65,7 +67,7 @@ function App() {
           </div>
         ))}
       </div>
-      <button onClick={()=> showHobbies()}>show hobbies!</button>
+      <button onClick={() => showHobbies()}>show hobbies!</button>
       <div className="hobbies_message">{message}</div>
       <form className="feedback">
         <h2>Your feedback is important to us!</h2>
