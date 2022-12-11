@@ -49,6 +49,7 @@ export const Mentions = () => {
         <Mention data={fetchUsers} onAdd={onAdd} style={defaultMentionStyle} />
       </MentionsInput>
       {/* " gegwegwe @[Jack](jack) gdsgdsg @[foo](john).   " .match( / [^(]+(?= \) ) / g ) */}
+      {/*const mailformat = /^[a-z0-9_.-]{2,}@[a-z.]{2,}\.[a-z]{2,}$/gi*/}
     </div>
   );
 };

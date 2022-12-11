@@ -40,29 +40,30 @@ function App() {
     },
   ];
 
-
   const [person, setPerson] = useState();
   const [message, setMessage] = useState("");
 
   const showHobbies = () => {
     person.hobbies.length > 0
-      ? setMessage(
-          person.name + "s " + "hobbies are: " + person.hobbies
-        )
+      ? setMessage(person.name + "s " + "hobbies are: " + person.hobbies)
       : setMessage(
-          "Unfortunately, " +
-            person.name +
-            " " +
-            "don't have any hobbies."
+          "Unfortunately, " + person.name + " " + "has no hobbies."
         );
   };
+  // const noHobbies = () => {
+  //   person.hobbies.length > 0
+  //     ? setMessage(person.name + " has " + person.hobbies.length + " hobbies")
+  //     : setMessage(
+  //         "Unfortunately, " + person.name + " " + "has no hobbies."
+  //       );
+  // };
 
   const countHobbies = (person) => {
     setPerson(person);
     setMessage(person.name + " has " + person.hobbies.length + " hobbies");
+    // noHobbies(person)
   };
 
-  // const mailformat = /^[a-z0-9_.-]{2,}@[a-z.]{2,}\.[a-z]{2,}$/gi;
 
   return (
     <div className="App">
@@ -81,9 +82,7 @@ function App() {
           </div>
         ))}
       </div>
-      <button 
-      onClick={() => showHobbies()}
-      >show hobbies!</button>
+      <button onClick={() => showHobbies()}>show hobbies!</button>
       <div className="hobbies_message">{message}</div>
       <form className="feedback">
         <h2>Your feedback is important to us!</h2>
@@ -99,7 +98,7 @@ function App() {
         />
         <button className="button">send</button>
       </form>
-      <Mentions users={users}/>
+      <Mentions users={users} />
     </div>
   );
 }
