@@ -53,15 +53,15 @@ font-weight: bold;
 .input_email{
   display: flex;
   justify-content: center;
-  width: 15rem;
+  width: 14rem;
   min-height: 2rem;
-  /* padding-left: 9px; */
+  padding-left: 1rem;
   font-size: 14px;
 }
 .input_text{
-  width: 34rem;
+  width: 35rem;
   min-height: 2rem;
-  padding-left: 9px;
+  padding-left: 1rem;
 }
 .add{
   width: 4rem;

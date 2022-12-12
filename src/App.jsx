@@ -115,7 +115,7 @@ function App() {
             type="text"
             className="input_email"
             name="email"
-            placeholder="your email address"
+            placeholder="your email address..."
             value={user.email}
             onChange={handleUserInput}
           />
@@ -123,7 +123,7 @@ function App() {
             type="text"
             className="input_text"
             name="text"
-            placeholder="your feedback"
+            placeholder="your feedback..."
             value={user.text}
             onChange={handleUserInput}
           />
