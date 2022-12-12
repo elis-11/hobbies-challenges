@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
+import { Mentions } from "./mentions/Mentions";
 
 function App() {
   const [people, setPeople] = useState([
@@ -28,46 +29,44 @@ function App() {
       image: "https://source.unsplash.com/100x100/?person,officer",
     },
   ]);
+  const users = [
+    {
+      id: "jack",
+      display: "Jack",
+    },
+    {
+      id: "john",
+      display: "john",
+    },
+  ];
 
   const [person, setPerson] = useState();
   const [message, setMessage] = useState("");
-  
-  const [users, setUsers] = useState(() => {
-    const saveUsersInLS = localStorage.getItem("users");
-    if (saveUsersInLS) {
-      return JSON.parse(saveUsersInLS);
-    } else {
-      return [];
-    }
+  const [user, setUser] = useState({
+    id: 1,
+    email: "",
+    text: "",
   });
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
-
-  const handleAddInputChange = (e) => {
+  const fillEmail = (e) => {
     setEmail(e.target.value);
+  };
+  const fillText = (e) => {
     setText(e.target.value);
   };
 
-  const handleAddFormSubmit = (e) => {
-    e.preventDefault();
-
-    if (email !== "" || text !== "") {
-      setUsers([
-        ...users,
-        {
-          id: new Date(),
-          email: email.trim(),
-          text: text.trim(),
-        },
-      ]);
-    }
-    setEmail("");
+  const fillFeedback = () => {
+    setUser({
+      ...user,
+      id: new Date().toString(),
+      email: email,
+      text: text, 
+    });
+    setEmail("")
     setText("");
-  };
+  }
 
   const showHobbies = () => {
     person.hobbies.length > 0
@@ -108,37 +107,31 @@ function App() {
       <button onClick={() => showHobbies()}>show hobbies!</button>
       <div className="hobbies_message">{message}</div>
 
-      <div className="feedback">
-        <h2>
-          Your feedback is important to us!
-        </h2>
-        <form onSubmit={handleAddFormSubmit}>
-          <input
-            type="text"
-            className="email"
-            name="email"
-            placeholder="your email address"
-            value={users.email}
-            onChange={handleAddInputChange}
-          />
-          <input
-            type="text"
-            className="text"
-            name="text"
-            placeholder="your feedback"
-            value={users.text}
-            onChange={handleAddInputChange}
-          />
-          <button type="submit">Add</button>
-        </form>
-
-        {users.map((user) => (
-          <div key={user.id} className="user">
-            <div className="email">{user.email}</div>
-            <div className="email">{user.text}</div>
-          </div>
-        ))}
-      </div>
+      <form className="user">
+        <h2>Your user is important to us!</h2>
+        <input
+          type="text"
+          onChange={fillEmail}
+          value={email}
+          className="email"
+          placeholder="your email..."
+        />
+        <textarea
+          rows="2"
+          cols="50"
+          type="text"
+          name="text"
+          onChange={fillText}
+          value={text}
+          className="message"
+          placeholder="write a message..."
+        />
+      </form>
+        <button onClick={fillFeedback} className="button">
+          show user
+        </button>
+      <div className="user">{`${user.email}: ${user.text}`}</div>
+      {/* <Mentions users={users} /> */}
     </div>
   );
 }
