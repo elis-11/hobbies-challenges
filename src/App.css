@@ -33,18 +33,53 @@ font-weight: bold;
 }
 .hobbies_message{
   color: green;
+  padding: 15px;
+  font-size: 20px;
 }
 .feedback{
   display: flex;
   flex-direction: column;
+  place-items: center;
+  width: 55rem;
+  height: auto;
+  min-height: 2rem;
+}
+.input_feedback{
+  width: 55em;
+  height: auto;
+  min-height: 2rem;
+  padding: 0;
+}
+.input_email{
+  width: 15rem;
+  min-height: 2rem;
+  padding-left: 9px;
+  font-size: 14px;
+}
+.input_text{
+  width: 34rem;
+  min-height: 2rem;
+  padding-left: 9px;
+}
+.add{
+  width: 4rem;
+  border: 1px solid gray;
+}
+.user{
+  display: flex;
+  border: 1px solid gray;
+  width: 55rem;
+  height: auto;
+  min-height: 2rem;
+  margin: 0.5;
 }
 .email{
-  height: auto;
-  padding-left: 15px;
+  width: 15rem;
+  padding-left: 0;
+  border-right: 1px solid gray;
 }
-.message{
-  height: auto;
-  margin: 15px 0;
-  padding-left: 15px;
+.text{
+padding-left: 8px;
+width: 25rem;
 }
 

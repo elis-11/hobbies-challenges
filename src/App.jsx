@@ -31,7 +31,7 @@ function App() {
 
   const [person, setPerson] = useState();
   const [message, setMessage] = useState("");
-  
+
   const [users, setUsers] = useState(() => {
     const saveUsersInLS = localStorage.getItem("users");
     if (saveUsersInLS) {
@@ -40,35 +40,27 @@ function App() {
       return [];
     }
   });
-  const [email, setEmail] = useState("");
-  const [text, setText] = useState("");
-
+  
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
-
-  const handleAddInputChange = (e) => {
-    setEmail(e.target.value);
-    setText(e.target.value);
+  
+  const [user, setUser] = useState({});
+  // Feedback
+  const addFeedback = () => {
+    const addUser = {
+      id: new Date().toString(),
+      email: user.email,
+      text: user.text,
+    };
+    setUsers([...users, addUser]);
+    setUser({ ...user, email: "", text: "" });
+  };
+  const handleUserInput = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleAddFormSubmit = (e) => {
-    e.preventDefault();
-
-    if (email !== "" || text !== "") {
-      setUsers([
-        ...users,
-        {
-          id: new Date(),
-          email: email.trim(),
-          text: text.trim(),
-        },
-      ]);
-    }
-    setEmail("");
-    setText("");
-  };
-
+  // Hobbies
   const showHobbies = () => {
     person.hobbies.length > 0
       ? setMessage(person.name + "s " + "hobbies are: " + person.hobbies)
@@ -109,33 +101,31 @@ function App() {
       <div className="hobbies_message">{message}</div>
 
       <div className="feedback">
-        <h2>
-          Your feedback is important to us!
-        </h2>
-        <form onSubmit={handleAddFormSubmit}>
+        <h2>Your feedback is important to us!</h2>
+        <div className="input_feedback">
           <input
             type="text"
-            className="email"
+            className="input_email"
             name="email"
             placeholder="your email address"
-            value={users.email}
-            onChange={handleAddInputChange}
+            value={user.email}
+            onChange={handleUserInput}
           />
           <input
             type="text"
-            className="text"
+            className="input_text"
             name="text"
             placeholder="your feedback"
-            value={users.text}
-            onChange={handleAddInputChange}
+            value={user.text}
+            onChange={handleUserInput}
           />
-          <button type="submit">Add</button>
-        </form>
+          <button onClick={()=>addFeedback()} className="add">Add</button>
+        </div>
 
         {users.map((user) => (
           <div key={user.id} className="user">
             <div className="email">{user.email}</div>
-            <div className="email">{user.text}</div>
+            <div className="text">{user.text}</div>
           </div>
         ))}
       </div>
