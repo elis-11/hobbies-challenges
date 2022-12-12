@@ -48,12 +48,14 @@ font-weight: bold;
   width: 55em;
   height: auto;
   min-height: 2rem;
-  padding: 0;
+  display: flex;
 }
 .input_email{
+  display: flex;
+  justify-content: center;
   width: 15rem;
   min-height: 2rem;
-  padding-left: 9px;
+  /* padding-left: 9px; */
   font-size: 14px;
 }
 .input_text{
@@ -67,11 +69,12 @@ font-weight: bold;
 }
 .user{
   display: flex;
-  border: 1px solid gray;
+  place-items: center;
   width: 55rem;
   height: auto;
   min-height: 2rem;
   margin: 0.5;
+  border: 1px solid gray;
 }
 .email{
   width: 15rem;
@@ -80,6 +83,9 @@ font-weight: bold;
 }
 .text{
 padding-left: 8px;
-width: 25rem;
+width: 35rem;
+}
+.delete{
+  width: 4rem;
 }
 

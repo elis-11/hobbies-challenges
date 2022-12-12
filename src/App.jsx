@@ -40,11 +40,11 @@ function App() {
       return [];
     }
   });
-  
+
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
-  
+
   const [user, setUser] = useState({});
   // Feedback
   const addFeedback = () => {
@@ -59,6 +59,12 @@ function App() {
   const handleUserInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  // Delete Feedback
+  const deleteFeedback = id => {
+    const deleteMessage = users.filter(user => user.id !== id)
+    setUsers(deleteMessage)
+  }
 
   // Hobbies
   const showHobbies = () => {
@@ -83,6 +89,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hobbies Challenges</h1>
+      {/* HOBBIES */}
       <div className="people">
         {people.map((person) => (
           <div
@@ -100,6 +107,7 @@ function App() {
       <button onClick={() => showHobbies()}>show hobbies!</button>
       <div className="hobbies_message">{message}</div>
 
+      {/* FEEDBACK */}
       <div className="feedback">
         <h2>Your feedback is important to us!</h2>
         <div className="input_feedback">
@@ -119,13 +127,17 @@ function App() {
             value={user.text}
             onChange={handleUserInput}
           />
-          <button onClick={()=>addFeedback()} className="add">Add</button>
+          <button onClick={() => addFeedback()} className="add">
+            Add
+          </button>
         </div>
-
         {users.map((user) => (
           <div key={user.id} className="user">
             <div className="email">{user.email}</div>
             <div className="text">{user.text}</div>
+          <button
+          onClick={()=> deleteFeedback(user.id)}
+          className="deleteFeedback" role="button">🗑</button>
           </div>
         ))}
       </div>
