@@ -45,7 +45,7 @@ function App() {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({email: "", text: "",});
   // Feedback
   const addFeedback = () => {
     const addUser = {
@@ -72,18 +72,9 @@ function App() {
       ? setMessage(person.name + "s " + "hobbies are: " + person.hobbies)
       : setMessage("Unfortunately, " + person.name + " " + "has no hobbies.");
   };
-  // const noHobbies = () => {
-  //   person.hobbies.length > 0
-  //     ? setMessage(person.name + " has " + person.hobbies.length + " hobbies")
-  //     : setMessage(
-  //         "Unfortunately, " + person.name + " " + "has no hobbies."
-  //       );
-  // };
-
   const countHobbies = (person) => {
     setPerson(person);
-    setMessage(person.name + " has " + person.hobbies.length + " hobbies");
-    // noHobbies(person)
+    setMessage(person.name + " has " + (person.hobbies.length || "no") + " hobbies");
   };
 
   return (
