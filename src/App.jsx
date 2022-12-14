@@ -74,7 +74,7 @@ function App() {
   };
   const countHobbies = (person) => {
     setPerson(person);
-    setMessage(person.name + " has " + (person.hobbies.length || "no") + " hobbies");
+    setMessage((person.hobbies.length === 0 ? 'Unfortunately, ': "") + person.name + " has " + (person.hobbies.length || "no") + " hobbies");
   };
 
   return (
