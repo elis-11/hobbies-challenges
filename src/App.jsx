@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
 
   const [person, setPerson] = useState();
   const [message, setMessage] = useState("");
+  const inputRef = useRef();
 
   const [users, setUsers] = useState(() => {
     const saveUsersInLS = localStorage.getItem("users");
@@ -45,7 +46,7 @@ function App() {
     localStorage.setItem("users", JSON.stringify(users));
   }, [users]);
 
-  const [user, setUser] = useState({email: "", text: "",});
+  const [user, setUser] = useState({ email: "", text: "" });
   // Feedback
   const addFeedback = () => {
     const addUser = {
@@ -61,10 +62,10 @@ function App() {
   };
 
   // Delete Feedback
-  const deleteFeedback = id => {
-    const deleteMessage = users.filter(user => user.id !== id)
-    setUsers(deleteMessage)
-  }
+  const deleteFeedback = (id) => {
+    const deleteMessage = users.filter((user) => user.id !== id);
+    setUsers(deleteMessage);
+  };
 
   // Hobbies
   const showHobbies = () => {
@@ -74,7 +75,13 @@ function App() {
   };
   const countHobbies = (person) => {
     setPerson(person);
-    setMessage((person.hobbies.length === 0 ? 'Unfortunately, ': "") + person.name + " has " + (person.hobbies.length || "no") + " hobbies");
+    setMessage(
+      (person.hobbies.length === 0 ? "Unfortunately, " : "") +
+        person.name +
+        " has " +
+        (person.hobbies.length || "no") +
+        " hobbies"
+    );
   };
 
   return (
@@ -103,6 +110,8 @@ function App() {
         <h2>Your feedback is important to us!</h2>
         <div className="input_feedback">
           <input
+            autoFocus
+            ref={inputRef}
             type="text"
             className="input_email"
             name="email"
@@ -126,9 +135,13 @@ function App() {
           <div key={user.id} className="user">
             <div className="email">{user.email}</div>
             <div className="text">{user.text}</div>
-          <button
-          onClick={()=> deleteFeedback(user.id)}
-          className="deleteFeedback" role="button">🗑</button>
+            <button
+              onClick={() => deleteFeedback(user.id)}
+              className="deleteFeedback"
+              role="button"
+            >
+              🗑
+            </button>
           </div>
         ))}
       </div>
