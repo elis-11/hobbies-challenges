@@ -41,12 +41,12 @@ font-weight: bold;
   display: flex;
   flex-direction: column;
   place-items: center;
-  width: 55rem;
+  width: 45rem;
   height: auto;
   min-height: 2rem;
 }
 .input_feedback{
-  width: 55em;
+  width: 45em;
   height: auto;
   min-height: 2rem;
   display: flex;
@@ -60,7 +60,7 @@ font-weight: bold;
   font-size: 14px;
 }
 .input_text{
-  width: 35rem;
+  width: 30rem;
   min-height: 2rem;
   padding-left: 1rem;
 }
@@ -71,20 +71,20 @@ font-weight: bold;
 .user{
   display: flex;
   place-items: center;
-  width: 55rem;
+  width: 45rem;
   height: auto;
   min-height: 2rem;
   margin: 0.5;
   border: 1px solid gray;
 }
 .email{
-  width: 15rem;
+  width: 25rem;
   padding-left: 0;
   border-right: 1px solid gray;
 }
 .text{
 padding-left: 8px;
-width: 35rem;
+width: 45rem;
 }
 .delete{
   width: 4rem;

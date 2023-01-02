@@ -56,6 +56,7 @@ function App() {
     };
     setUsers([...users, addUser]);
     setUser({ ...user, email: "", text: "" });
+    inputRef.current.focus()
   };
   const handleUserInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
